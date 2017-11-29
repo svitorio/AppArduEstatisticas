@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.vitorio.arduestatistica.ConfigurationsColumsTwo"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TableRow
+        android:id="@+id/tbr1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/edtName1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Name Of Colum"/>
+
+        <Spinner
+            android:id="@+id/spnType1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/type"
+            />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tbr2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/edtName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Name Of Colum"/>
+
+        <Spinner
+            android:id="@+id/spnType2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/type"
+            />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tbr3"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/edtName3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Name Of Colum"/>
+
+        <Spinner
+            android:id="@+id/spnType3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/type"
+            />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tbr4"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/edtName4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Name Of Colum"/>
+
+        <Spinner
+            android:id="@+id/spnType4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/type"
+            />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tbr5"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/edtName5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Name Of Colum"/>
+
+        <Spinner
+            android:id="@+id/spnType5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/type"
+            />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tbr6"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/edtName6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Name Of Colum"/>
+
+        <Spinner
+            android:id="@+id/spnType6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/type"
+            />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tbr7"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/edtName7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Name Of Colum"/>
+
+        <Spinner
+            android:id="@+id/spnType7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/type"
+            />
+    </TableRow>
+    <TableRow
+        android:id="@+id/tbr8"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/edtName8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Name Of Colum"/>
+
+        <Spinner
+            android:id="@+id/spnType8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/type"
+            />
+    </TableRow>
+
+</LinearLayout>
