@@ -30,7 +30,6 @@ public class ConfigurationsColumsTwo extends AppCompatActivity {
         tableRow[6]=findViewById(R.id.tbr7);
         tableRow[7]=findViewById(R.id.tbr8);
 
-
         sppiners[0] = findViewById(R.id.spnType1);
         sppiners[1] = findViewById(R.id.spnType2);
         sppiners[2] = findViewById(R.id.spnType3);
@@ -39,7 +38,7 @@ public class ConfigurationsColumsTwo extends AppCompatActivity {
         sppiners[5] = findViewById(R.id.spnType6);
         sppiners[6] = findViewById(R.id.spnType7);
         sppiners[7] = findViewById(R.id.spnType8);
-        sppiners[1].setVisibility(View.VISIBLE);
+       // sppiners[1].setVisibility(View.VISIBLE);
         for (int i=0;i<colums;i++){
             tableRow[i].setVisibility(View.VISIBLE);
         }
