@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
@@ -34,6 +35,8 @@ public class ConfigurationsColumsTwo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configurations_colums_two);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_BEHIND);
+
         final Intent intent = getIntent();
         final int colums = Integer.parseInt(intent.getStringExtra("number"));
         Spinner[] sppiners= new Spinner[8];

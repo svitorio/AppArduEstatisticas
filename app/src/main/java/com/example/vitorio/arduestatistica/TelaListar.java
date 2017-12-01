@@ -3,6 +3,7 @@ package com.example.vitorio.arduestatistica;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -44,6 +46,9 @@ public class TelaListar extends AppCompatActivity {
         Intent intent = getIntent();
         listaDeCadastro = new ListView[8];
         nameofcolumsst = getIntent().getStringArrayExtra("nomeco");
+        if (nameofcolumsst.length>3){
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
         listaDeCadastro[0] = (ListView) findViewById(R.id.list_view);
         listaDeCadastro[1] = (ListView) findViewById(R.id.list_view2);
         listaDeCadastro[2] = (ListView) findViewById(R.id.list_view3);
@@ -62,7 +67,33 @@ public class TelaListar extends AppCompatActivity {
        //     }
 
       //  });
-
+        findViewById(R.id.btnStart).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // connect = new ConnectionThread("98:D3:36:00:9D:51");
+                try {
+                    connect.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        findViewById(R.id.btnStop).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                connect = new ConnectionThread("98:D3:36:00:9D:51");
+                connect.cancel();
+            }
+        });
+        findViewById(R.id.btnResume).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(connect.isInterrupted()) {
+                    connect = new ConnectionThread("98:D3:36:00:9D:51");
+                    connect.start();
+                }
+            }
+        });
         LinearLayout[] linearLayouts = new LinearLayout[8];
         linearLayouts[0] = (LinearLayout)findViewById(R.id.line1);
         linearLayouts[1] = (LinearLayout)findViewById(R.id.line2);
@@ -71,8 +102,8 @@ public class TelaListar extends AppCompatActivity {
         linearLayouts[0].setVisibility(View.VISIBLE);
         linearLayouts[1].setVisibility(View.VISIBLE);
         linearLayouts[2].setVisibility(View.VISIBLE);
-        connect = new ConnectionThread("98:D3:36:00:9D:51");
-        connect.start();
+
+
         try {
             Thread.sleep(1000);
         } catch (Exception E){}
@@ -96,10 +127,14 @@ public class TelaListar extends AppCompatActivity {
 				mensagens de status de conexão (iniciadas com --),
 				atualizamos o status da conexão conforme o código.
 			 */
-            if(dataString.equals("---N"))
-                System.out.println("Ocorreu um erro durante a conexão");//status.setText("Ocorreu um erro durante a conexão");
-            else if(dataString.equals("---S"))
+            if(dataString.equals("---N")) {
+                String aviso = "Ocorreu um erro durante a conexão" ;
+                System.out.println(aviso);//status.setText("Ocorreu um erro durante a conexão");
+                alerta(aviso);
+            }
+            else if(dataString.equals("---S")) {
                 System.out.println("Conectado");//status.setText("Conectado");
+            }
             else {
 
 				/* Se a mensagem não for um código de status,
@@ -145,6 +180,10 @@ public class TelaListar extends AppCompatActivity {
         }
     };
 
+    private static void alerta(String aviso) {
+        Toast.makeText(a,aviso,Toast.LENGTH_SHORT).show();
+    }
+
     private static void setarValor(String[] dados) {
         dadossensor.add(new Dados(dados[0],dados[0]));
         ArrayAdapter<Dados> adapter = new ArrayAdapter<Dados>(a,
@@ -160,8 +199,27 @@ public class TelaListar extends AppCompatActivity {
         listaDeCadastro[2].setAdapter(adapter2);
     }
 
-    public static void setaValores(ArrayList<Dados> arrayList) {
-
+    public static void dadosestatiscos(ArrayList<Dados> arrayList) {
+       /* public int moda() {
+            int[] cont = new int[CPD.controladora + 1];
+            int vezes = 0;
+            int indice = 0;
+            for (int i=0; i < (CPD.controladora + 1); i++) {
+                for (int j=0;j < (CPD.controladora + 1); j++) {
+                    if(vet[i] == vet[j]) {
+                        cont[i] = cont[i] + 1;
+                    }
+                }
+            }
+            vezes = cont[0];
+            for (int i=0; i < cont.length; i++) {
+                if (cont[i] > vezes) {
+                    vezes = cont[i];
+                    indice = i;
+                }
+            }
+            return vet[indice];
+        }*/
     }
 
    // @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)

@@ -9,12 +9,18 @@
     <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-
         <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iniciar"/>
+        <Button
+            android:id="@+id/btnStop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PARAR"/>
         <Button
+            android:id="@+id/btnResume"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Continuar"/>
