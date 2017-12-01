@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,11 +23,14 @@ import java.util.List;
 
 public class TelaListar extends AppCompatActivity {
 
-    static ListView listaDeCadastro;
+    static ListView[] listaDeCadastro;
     ConnectionThread connect;
     static String[] nameofcolumsst;
     int colums;
-    static List<Dados> dadossensor = new ArrayList<Dados>();;
+    static List<Dados> dadossensor = new ArrayList<Dados>();
+    static List<Dados> dadossensor1 = new ArrayList<Dados>();
+    static List<Dados> dadossensor2 = new ArrayList<Dados>();
+
     /*public TelaListar(String[] nameofcolum, int colum) {
         this.nameofcolumsst = nameofcolum;
         this.colums = colum;
@@ -38,8 +42,11 @@ public class TelaListar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_listar);
         Intent intent = getIntent();
+        listaDeCadastro = new ListView[8];
         nameofcolumsst = getIntent().getStringArrayExtra("nomeco");
-        listaDeCadastro = (ListView) findViewById(R.id.list_view);
+        listaDeCadastro[0] = (ListView) findViewById(R.id.list_view);
+        listaDeCadastro[1] = (ListView) findViewById(R.id.list_view2);
+        listaDeCadastro[2] = (ListView) findViewById(R.id.list_view3);
         System.out.println("Nome Primeira Coluna::"+nameofcolumsst[0]);
         //final ArrayList<Dados> listaDePontosCadastrados;
         Activity a1 = this;
@@ -56,6 +63,14 @@ public class TelaListar extends AppCompatActivity {
 
       //  });
 
+        LinearLayout[] linearLayouts = new LinearLayout[8];
+        linearLayouts[0] = (LinearLayout)findViewById(R.id.line1);
+        linearLayouts[1] = (LinearLayout)findViewById(R.id.line2);
+        linearLayouts[2] = (LinearLayout)findViewById(R.id.line3);
+
+        linearLayouts[0].setVisibility(View.VISIBLE);
+        linearLayouts[1].setVisibility(View.VISIBLE);
+        linearLayouts[2].setVisibility(View.VISIBLE);
         connect = new ConnectionThread("98:D3:36:00:9D:51");
         connect.start();
         try {
@@ -134,7 +149,15 @@ public class TelaListar extends AppCompatActivity {
         dadossensor.add(new Dados(dados[0],dados[0]));
         ArrayAdapter<Dados> adapter = new ArrayAdapter<Dados>(a,
                 android.R.layout.simple_list_item_1, dadossensor);
-        listaDeCadastro.setAdapter(adapter);
+        dadossensor1.add(new Dados(dados[1],dados[1]));
+        ArrayAdapter<Dados> adapter1 = new ArrayAdapter<Dados>(a,
+                android.R.layout.simple_list_item_1, dadossensor1);
+        dadossensor2.add(new Dados(dados[2],dados[2]));
+        ArrayAdapter<Dados> adapter2 = new ArrayAdapter<Dados>(a,
+                android.R.layout.simple_list_item_1, dadossensor2);
+        listaDeCadastro[0].setAdapter(adapter);
+        listaDeCadastro[1].setAdapter(adapter1);
+        listaDeCadastro[2].setAdapter(adapter2);
     }
 
     public static void setaValores(ArrayList<Dados> arrayList) {
